@@ -22,11 +22,10 @@ onMounted(async () => {
     if (!!startApp) {
         const jsonString = atob(startApp);
         const params = JSON.parse(jsonString);
-        const link = `${window.location.origin}/booth?boothId=${params.boothId}&creatorId=${params.creatorId}`;
-        console.log(link);
-        await navigateTo(link, { external: true });
+        const link = `/booth?boothId=${params.boothId}&creatorId=${params.creatorId}`;
+        await navigateTo(link);
     } else {
-        navigateTo('/search');
+        await navigateTo('/search');
     }
 });
 </script>

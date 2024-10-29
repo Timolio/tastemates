@@ -28,7 +28,6 @@ export const useUserStore = defineStore('userStore', {
                     body: { userId },
                 });
                 if (data.success) {
-                    console.log('success reached by fetching');
                     this.favorites =
                         data?.userFavorites?.reduce(
                             (acc, { _id, ...movieInfo }) => {
@@ -38,7 +37,6 @@ export const useUserStore = defineStore('userStore', {
                             {}
                         ) ?? {};
 
-                    console.log(data);
                     this.userPhoto = `data:image/jpeg;base64,${data.userPhoto}`;
                     return true;
                 }

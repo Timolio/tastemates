@@ -20,7 +20,7 @@ export const useUserStore = defineStore('userStore', {
                 };
             }
         },
-        async fetchUser(userId, username) {
+        async fetchUser(userId) {
             this.userId = userId;
             try {
                 const data = await $fetch('/api/checkUser', {
@@ -28,6 +28,7 @@ export const useUserStore = defineStore('userStore', {
                     body: { userId },
                 });
                 if (data.success) {
+                    console.log('success reached by fetching');
                     this.favorites =
                         data?.userFavorites?.reduce(
                             (acc, { _id, ...movieInfo }) => {
@@ -41,8 +42,8 @@ export const useUserStore = defineStore('userStore', {
                     this.userPhoto = `data:image/jpeg;base64,${data.userPhoto}`;
                     return true;
                 }
-                return false;
                 console.log('fetched', this.favorites);
+                return false;
             } catch (error) {
                 console.error('Error fetching user:', error);
                 return false;

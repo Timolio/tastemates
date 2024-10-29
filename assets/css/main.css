@@ -1,0 +1,27 @@
+body {
+    /* background-color: var(--tg-theme-button-color); */
+    /* background-image: linear-gradient(
+        to top,
+        var(--tg-theme-button-color),
+        var(--tg-theme-button-dcolor),
+        var(--tg-theme-button-d2color)
+    ); */
+    background-image: linear-gradient(
+        to top left,
+        var(--tg-theme-bg-dcolor),
+        var(--tg-theme-bg-color)
+    );
+    color: var(--tg-theme-text-color);
+}
+
+.hint {
+    color: var(--tg-theme-hint-color);
+}
+
+main {
+    height: auto;
+}
+
+p {
+    color: var(--tg-theme-hint-color);
+}

@@ -35,6 +35,7 @@ const copyLink = async () => {
 
 const sendLink = async () => {
     const link = await generateLink();
+    console.log(link);
     openTelegramLink(`https://t.me/share/url?url=${link}&text=@tastemate_bot`);
 };
 </script>

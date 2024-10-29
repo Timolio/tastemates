@@ -30,7 +30,7 @@ export default defineEventHandler(async event => {
     }
 
     return {
-        link: `https://t.me/tastemate_bot/start?startapp=${encodeURIComponent(
+        link: `https://t.me/tastemates_bot/start?startapp=${btoa(
             JSON.stringify({ boothId, creatorId: telegramId })
         )}`,
         // link: `localhost:3000?startapp=${encodeURIComponent(

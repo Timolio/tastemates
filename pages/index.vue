@@ -15,11 +15,13 @@ onMounted(async () => {
         noUser.value = true;
         return;
     }
-    // const startApp = initDataUnsafe?.start_param;
-    const startApp = route.query?.startapp;
+    const startApp = initDataUnsafe?.start_param;
+    // const startApp = route.query?.startapp;
+
     console.log(startApp);
     if (!!startApp) {
-        const params = JSON.parse(startApp);
+        const jsonString = atob(startApp);
+        const params = JSON.parse(jsonString);
         const link = `${window.location.origin}/booth?boothId=${params.boothId}&creatorId=${params.creatorId}`;
         console.log(link);
         await navigateTo(link, { external: true });

@@ -7,7 +7,7 @@ const { openTelegramLink, openLink } = useWebAppNavigation();
 const { favorites, userPhoto } = storeToRefs(userStore);
 
 const goToSearch = async () => {
-    await navigateTo('/');
+    await navigateTo('/search');
 };
 
 const generateLink = async () => {
@@ -134,7 +134,11 @@ const sendLink = async () => {
                     class="poster rounded"
                     :src="`https://image.tmdb.org/t/p/w200${item.poster_path}`"
                     :alt="item.title"
-                    @click="openLink(item.original_name)"
+                    @click="
+                        openLink(
+                            `https://google.com/search?q=${item.original_name}`
+                        )
+                    "
                 />
             </div>
         </div>

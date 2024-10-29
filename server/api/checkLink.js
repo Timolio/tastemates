@@ -2,7 +2,7 @@ import { booths, media, users } from '../plugins/database';
 
 export default defineEventHandler(async event => {
     const body = await readBody(event);
-    const { boothId, telegramId, creatorId, photoUrl } = body;
+    const { boothId, telegramId, creatorId } = body;
 
     console.log(typeof boothId, typeof telegramId, typeof creatorId);
 
@@ -20,31 +20,36 @@ export default defineEventHandler(async event => {
         throw createError('An error occured');
     }
 
+    if (booth.openedBy.id !== telegramId && booth.openedBy.id !== null) {
+        return {
+            message: 'Эта ссылка уже была использована не вами.',
+        };
+    }
+
     if (telegramId == creatorId) {
         if (!booth.openedById) {
             return {
                 message: 'Никто ещё не открыл эту ссылку',
             };
         } else {
+            const openedByUser = await users.findOne({
+                _id: booth.openedBy.id,
+            });
             return {
                 message: `Эту ссылку уже открыл пользователь с ID: ${booth.openedBy.id}`,
                 totalMatchPercentage: booth.totalMatchPercentage,
-                photo1: booth.creator.photoUrl,
-                photo2: booth.openedBy.photoUrl,
+                photo: openedByUser.photo_base64,
             };
         }
     }
+
+    const creatorUser = await users.findOne({ _id: booth.creator.id });
 
     if (booth.openedBy.id === telegramId) {
         return {
             message: `Вы уже открывали эту ссылку.`,
             totalMatchPercentage: booth.totalMatchPercentage,
-            photo1: booth.creator.photoUrl,
-            photo2: booth.openedBy.photoUrl,
-        };
-    } else if (booth.openedBy.id !== null) {
-        return {
-            message: 'Эта ссылка уже была использована не вами.',
+            photo: creatorUser.photo_base64,
         };
     }
 
@@ -122,7 +127,6 @@ export default defineEventHandler(async event => {
         {
             $set: {
                 'openedBy.id': telegramId,
-                'openedBy.photoUrl': photoUrl,
                 totalMatchPercentage,
             },
         }
@@ -131,8 +135,7 @@ export default defineEventHandler(async event => {
     return {
         message: `Вы успешно открыли ссылку.`,
         totalMatchPercentage,
-        photo1: booth.creator.photoUrl,
-        photo2: photoUrl,
+        photo: creatorUser.photo_base64,
     };
 });
 

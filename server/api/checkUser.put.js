@@ -2,27 +2,31 @@ import { media, users } from '../plugins/database';
 
 export default defineEventHandler(async event => {
     const body = await readBody(event);
-    const { userId, username } = body;
+    const { userId } = body;
 
     if (!userId) {
         return { success: false };
     }
 
     try {
-        const user = await users.findOneAndUpdate(
-            { _id: userId },
-            {
-                $setOnInsert: {
-                    favorites: [],
-                },
-                $set: {
-                    username: username,
-                },
-            },
-            { upsert: true, returnDocument: 'after' }
-        );
+        const user = await users.findOne({ _id: userId });
 
-        const { favorites: favoritesIds } = user;
+        if (!user) {
+            return { success: false };
+        }
+
+        const { favorites: favoritesIds, photo_base64 } = user;
+
+        // const response = await $fetch(
+        //     `https://api.telegram.org/file/bot${
+        //         useRuntimeConfig().BOT_TOKEN
+        //     }/${photo_url}`,
+        //     { responseType: 'arrayBuffer' }
+        // );
+
+        // const userPhoto = Buffer.from(response).toString('base64');
+
+        // console.log(typeof response, response);
 
         if (!favoritesIds || favoritesIds.length === 0) {
             return { success: true, favorites: {} };
@@ -32,7 +36,11 @@ export default defineEventHandler(async event => {
             .find({ _id: { $in: favoritesIds } })
             .toArray();
 
-        return { success: true, userFavorites: favorites };
+        return {
+            success: true,
+            userFavorites: favorites,
+            userPhoto: photo_base64,
+        };
     } catch (error) {
         console.error('DB Error', error);
         return { success: false };

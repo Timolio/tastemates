@@ -3,11 +3,13 @@ const { useWebApp } = await import('vue-tg');
 
 const { initDataUnsafe } = useWebApp();
 const route = useRoute();
+const userStore = useUserStore();
+const { userPhoto } = storeToRefs(userStore);
 
 const result = ref({
     message: '',
     totalMatchPercentage: null,
-    images: [],
+    photo: null,
 });
 
 const checkLinkState = async () => {
@@ -17,17 +19,14 @@ const checkLinkState = async () => {
             body: {
                 boothId: route.query?.boothId ?? null,
                 creatorId: Number(route.query?.creatorId ?? null),
-                telegramId: initDataUnsafe?.user?.id ?? 505,
-                photoUrl:
-                    initDataUnsafe?.user?.photo_url ??
-                    'https://static-cdn4-2.vigbo.tech/u19297/22269/blog/4426958/5938479/78187796/1000-Ekaterina_Nasyrova-e480a1ec229af18e4e66b3d4e696eb2a.JPG',
+                telegramId: initDataUnsafe?.user?.id ?? 404,
             },
         });
 
         result.value = {
             message: response.message,
             totalMatchPercentage: response.totalMatchPercentage,
-            images: [response.photo1, response.photo2],
+            photo: `data:image/jpeg;base64,${response.photo}`,
         };
     } catch (error) {
         result.value.message = 'Произошла ошибка при проверке состояния ссылки';
@@ -53,8 +52,8 @@ onMounted(() => {
                 >
             </h1>
             <ProgressCircle
-                :image1="result.images[0]"
-                :image2="result.images[1]"
+                :image1="result.photo"
+                :image2="userPhoto"
                 :percentage="result.totalMatchPercentage"
             />
         </div>

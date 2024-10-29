@@ -1,8 +1,5 @@
 <script setup>
 const { useWebApp, useWebAppTheme } = await import('vue-tg');
-const { initDataUnsafe } = useWebApp();
-
-const userStore = useUserStore();
 
 onMounted(async () => {
     const root = document.documentElement;
@@ -31,10 +28,6 @@ onMounted(async () => {
     root.style.setProperty(
         '--tg-theme-bg-d2color',
         adjust(style.getPropertyValue('--tg-theme-bg-color') || '', -20)
-    );
-    await userStore.fetchUser(
-        initDataUnsafe?.user?.id ?? 505,
-        initDataUnsafe?.user?.username ?? 'Abobolio'
     );
 });
 </script>

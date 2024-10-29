@@ -7,6 +7,7 @@ export default defineNuxtConfig({
 
     runtimeConfig: {
         MONGO_URI: process.env.MONGO_URI,
+        BOT_TOKEN: process.env.BOT_TOKEN,
         public: {
             tmdbApiKey: process.env.TMDB_API_KEY,
         },

@@ -6,11 +6,12 @@ body {
         var(--tg-theme-button-dcolor),
         var(--tg-theme-button-d2color)
     ); */
-    background-image: linear-gradient(
+    /* background-image: linear-gradient(
         to top left,
         var(--tg-theme-bg-dcolor),
         var(--tg-theme-bg-color)
-    );
+    ); */
+    background-color: var(--tg-theme-bg-color);
     color: var(--tg-theme-text-color);
 }
 

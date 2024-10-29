@@ -21,7 +21,7 @@ export default defineEventHandler(async event => {
         boothId = uuidv4();
         await booths.insertOne({
             _id: boothId,
-            creator: { id: Number(telegramId), photoUrl },
+            creator: { id: Number(telegramId) },
             openedBy: {
                 id: null,
             },

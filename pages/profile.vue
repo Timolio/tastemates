@@ -4,7 +4,7 @@ const { initDataUnsafe } = useWebApp();
 
 const userStore = useUserStore();
 const { openTelegramLink, openLink } = useWebAppNavigation();
-const { favorites } = storeToRefs(userStore);
+const { favorites, userPhoto } = storeToRefs(userStore);
 
 const goToSearch = async () => {
     await navigateTo('/');
@@ -12,10 +12,10 @@ const goToSearch = async () => {
 
 const generateLink = async () => {
     try {
-        console.log(initDataUnsafe?.user?.id ?? 505);
+        console.log(initDataUnsafe?.user?.id ?? 404);
         const response = await $fetch(
             `/api/generateLink?telegramId=${
-                initDataUnsafe?.user?.id ?? 505
+                initDataUnsafe?.user?.id ?? 404
             }&photoUrl=${
                 initDataUnsafe?.user?.photo_url ??
                 'https://static-cdn4-2.vigbo.tech/u19297/22269/blog/4426958/5938479/78187796/1000-Ekaterina_Nasyrova-e480a1ec229af18e4e66b3d4e696eb2a.JPG'
@@ -47,7 +47,8 @@ const sendLink = async () => {
             >
                 <div class="flex flex-row items-center gap-4">
                     <img
-                        :src="initDataUnsafe?.user?.photo_url"
+                        v-if="userPhoto !== null"
+                        :src="userPhoto"
                         class="avatar"
                     />
                     <div class="flex flex-col gap-2">

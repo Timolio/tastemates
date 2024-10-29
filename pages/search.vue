@@ -12,7 +12,7 @@ const userStore = useUserStore();
 const isFocused = ref(false);
 const status = ref(0);
 const searchElement = ref();
-const { favorites } = storeToRefs(userStore);
+const { favorites, userPhoto } = storeToRefs(userStore);
 
 const searchTMDB = async () => {
     if (query.value.length < 2) {
@@ -27,7 +27,7 @@ const searchTMDB = async () => {
             params: {
                 query: query.value,
                 include_adult: true,
-                language: 'ru',
+                language: initDataUnsafe?.user?.language_code ?? 'ru',
                 page: 1,
             },
             headers: {
@@ -74,7 +74,8 @@ onMounted(async () => {
             >
                 <div class="flex flex-row gap-4 items-center">
                     <img
-                        :src="initDataUnsafe?.user?.photo_url"
+                        v-if="userPhoto !== null"
+                        :src="userPhoto"
                         class="avatar"
                     />
                     <div class="flex flex-col gap-2">

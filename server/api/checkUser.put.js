@@ -28,13 +28,14 @@ export default defineEventHandler(async event => {
 
         // console.log(typeof response, response);
 
-        if (!favoritesIds || favoritesIds.length === 0) {
-            return { success: true, favorites: {} };
+        let favorites;
+        if (favoritesIds.length === 0) {
+            favorites = [];
+        } else {
+            favorites = await media
+                .find({ _id: { $in: favoritesIds } })
+                .toArray();
         }
-
-        const favorites = await media
-            .find({ _id: { $in: favoritesIds } })
-            .toArray();
 
         return {
             success: true,

@@ -19,7 +19,7 @@ const checkLinkState = async () => {
             body: {
                 boothId: route.query?.boothId ?? null,
                 creatorId: Number(route.query?.creatorId ?? null),
-                telegramId: initDataUnsafe?.user?.id ?? 404,
+                telegramId: initDataUnsafe?.user?.id ?? 505,
             },
         });
 

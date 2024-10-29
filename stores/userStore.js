@@ -5,7 +5,7 @@ export const useUserStore = defineStore('userStore', {
         return {
             userId: null,
             userPhoto: null,
-            favorites: {},
+            favorites: [],
         };
     },
     actions: {

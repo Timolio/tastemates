@@ -9,7 +9,7 @@ const userStore = useUserStore();
 const noUser = ref(false);
 
 onMounted(async () => {
-    const response = await userStore.fetchUser(initDataUnsafe?.user?.id ?? 404);
+    const response = await userStore.fetchUser(initDataUnsafe?.user?.id ?? 505);
     console.log(response);
     if (!response) {
         noUser.value = true;

@@ -12,10 +12,10 @@ const goToSearch = async () => {
 
 const generateLink = async () => {
     try {
-        console.log(initDataUnsafe?.user?.id ?? 404);
+        console.log(initDataUnsafe?.user?.id ?? 505);
         const response = await $fetch(
             `/api/generateLink?telegramId=${
-                initDataUnsafe?.user?.id ?? 404
+                initDataUnsafe?.user?.id ?? 505
             }&photoUrl=${
                 initDataUnsafe?.user?.photo_url ??
                 'https://static-cdn4-2.vigbo.tech/u19297/22269/blog/4426958/5938479/78187796/1000-Ekaterina_Nasyrova-e480a1ec229af18e4e66b3d4e696eb2a.JPG'

@@ -28,6 +28,7 @@ const checkLinkState = async () => {
             totalMatchPercentage: response.totalMatchPercentage,
             photo: `data:image/jpeg;base64,${response.photo}`,
         };
+        console.log(userPhoto, '-------', result.value.photo);
     } catch (error) {
         result.value.message = 'Произошла ошибка при проверке состояния ссылки';
         console.error(error);

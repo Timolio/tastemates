@@ -73,7 +73,10 @@ onMounted(async () => {
                 class="header w-full rounded-2xl flex flex-row py-2 px-8 items-center justify-between"
             >
                 <div class="flex flex-row gap-4 items-center">
-                    <img src="~/assets/images/avatar.jpg" class="avatar" />
+                    <img
+                        :src="initDataUnsafe?.user?.photo_url"
+                        class="avatar"
+                    />
                     <div class="flex flex-col gap-2">
                         <h1 class="text-2xl font-semibold">Timolio</h1>
                         <button

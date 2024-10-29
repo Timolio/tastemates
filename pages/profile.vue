@@ -46,7 +46,10 @@ const sendLink = async () => {
                 class="header h-full justify-between flex flex-row gap-4 items-center px-8 py-2"
             >
                 <div class="flex flex-row items-center gap-4">
-                    <img src="~/assets/images/avatar.jpg" class="avatar" />
+                    <img
+                        :src="initDataUnsafe?.user?.photo_url"
+                        class="avatar"
+                    />
                     <div class="flex flex-col gap-2">
                         <h1 class="text-2xl font-semibold">Timolio</h1>
                     </div>

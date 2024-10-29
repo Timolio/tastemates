@@ -5,11 +5,6 @@ const { initDataUnsafe } = useWebApp();
 const userStore = useUserStore();
 
 onMounted(async () => {
-    await userStore.fetchUser(
-        initDataUnsafe?.user?.id ?? 505,
-        initDataUnsafe?.user?.username ?? 'Abobolio'
-    );
-
     const root = document.documentElement;
     const style = window.getComputedStyle(root);
 
@@ -36,6 +31,10 @@ onMounted(async () => {
     root.style.setProperty(
         '--tg-theme-bg-d2color',
         adjust(style.getPropertyValue('--tg-theme-bg-color') || '', -20)
+    );
+    await userStore.fetchUser(
+        initDataUnsafe?.user?.id ?? 505,
+        initDataUnsafe?.user?.username ?? 'Abobolio'
     );
 });
 </script>

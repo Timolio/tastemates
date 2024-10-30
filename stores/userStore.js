@@ -10,10 +10,11 @@ export const useUserStore = defineStore('userStore', {
     },
     actions: {
         toggleFavorites(item) {
-            if (item.id in this.favorites) {
-                delete this.favorites[item.id];
+            const itemConId = conId(item.id, item.media_type);
+            if (itemConId in this.favorites) {
+                delete this.favorites[itemConId];
             } else {
-                this.favorites[item.id] = {
+                this.favorites[itemConId] = {
                     title: item.title ?? item.name,
                     poster_path: item.poster_path,
                     date: item.first_air_date ?? item.release_date,

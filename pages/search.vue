@@ -10,7 +10,6 @@ const route = useRoute();
 const query = ref('');
 const results = ref([]);
 const userStore = useUserStore();
-const isFocused = ref(false);
 const status = ref(0);
 const searchElement = ref();
 const { favorites, userPhoto } = storeToRefs(userStore);
@@ -131,14 +130,6 @@ onMounted(async () => {
                 v-model="query"
                 ref="searchElement"
                 @input="searchInput"
-                @focus="isFocused = true"
-                @blur="
-                    () => {
-                        if (query === '') {
-                            isFocused = false;
-                        }
-                    }
-                "
                 placeholder="Поиск"
                 class="grow pl-3"
             />

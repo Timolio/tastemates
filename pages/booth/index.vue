@@ -28,7 +28,6 @@ const checkLinkState = async () => {
             totalMatchPercentage: response.totalMatchPercentage,
             photo: `data:image/jpeg;base64,${response.photo}`,
         };
-        console.log(userPhoto, '-------', result.value.photo);
     } catch (error) {
         result.value.message = 'Произошла ошибка при проверке состояния ссылки';
         console.error(error);
@@ -68,7 +67,7 @@ onMounted(() => {
 }
 
 .sub {
-    background-color: var(--tg-theme-button-d2color);
+    background-color: var(--tg-theme-button-color);
     box-shadow: 0 0 20px var(--tg-theme-button-dtcolor);
 }
 </style>

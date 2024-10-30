@@ -19,8 +19,7 @@ onMounted(async () => {
         noUser.value = true;
         return;
     }
-    const startApp = initDataUnsafe?.start_param;
-    // const startApp = route.query?.startapp;
+    const startApp = initDataUnsafe?.start_param ?? route.query?.startapp;
 
     console.log(startApp);
     if (!!startApp) {

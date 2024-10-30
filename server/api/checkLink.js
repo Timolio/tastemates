@@ -19,7 +19,7 @@ export default defineEventHandler(async event => {
     }
 
     if (telegramId == creatorId) {
-        if (!booth.openedById) {
+        if (!booth.openedBy.id) {
             return {
                 message: 'Никто ещё не открыл эту ссылку',
             };
@@ -37,12 +37,13 @@ export default defineEventHandler(async event => {
 
     if (booth.openedBy.id === telegramId) {
         const creatorUser = await users.findOne({ _id: booth.creator.id });
+        console.log(creatorUser.photo_base64);
         return {
             message: `Вы уже открывали эту ссылку.`,
             totalMatchPercentage: booth.totalMatchPercentage,
             photo: creatorUser.photo_base64,
         };
-    } else if (booth.openedBy.id !== telegramId) {
+    } else if (booth.openedBy.id !== null) {
         return {
             message: 'Эта ссылка уже была использована не вами.',
         };
@@ -56,14 +57,13 @@ export default defineEventHandler(async event => {
         _id: telegramId,
     });
 
-    // Шаг 2: Совпадение по фильмам
+    // Шаг 2: Совпадение по фильмам с нормализацией по минимальному набору
     const commonMovieIds = creatorIds.filter(id => openedByIds.includes(id));
+    const minFavoriteCount = Math.min(creatorIds.length, openedByIds.length);
     const movieMatchPercentage =
-        (commonMovieIds.length /
-            new Set([...creatorIds, ...openedByIds]).size) *
-        100;
+        (commonMovieIds.length / minFavoriteCount) * 100;
 
-    // Шаг 3: Получаем ключевые слова для всех фильмов пользователя 1 и 2
+    // Шаг 3: Получаем ключевые слова для всех фильмов пользователя 1 и 2 (не меняется)
     const creatorKeywords = await media
         .find({ _id: { $in: creatorIds } })
         .project({ _id: 0, keywords: 1 })
@@ -74,7 +74,7 @@ export default defineEventHandler(async event => {
         .project({ _id: 0, keywords: 1 })
         .toArray();
 
-    // Собираем все ключевые слова и считаем их частоту для каждого пользователя
+    // Шаг 4: Подсчитываем частоту ключевых слов для каждого пользователя (не меняется)
     const keywordFrequencyCreator = countKeywordFrequency(creatorKeywords);
     const keywordFrequencyOpenedBy = countKeywordFrequency(openedByKeywords);
 
@@ -87,11 +87,10 @@ export default defineEventHandler(async event => {
         keywordFrequencyOpenedBy
     ).reduce((a, b) => a + b, 0);
 
-    // Определяем совпадение по ключевым словам, учитывая частичное совпадение
+    // Шаг 5: Определяем совпадение по ключевым словам с нормализацией
     let commonKeywordsCount = 0;
     Object.keys(keywordFrequencyCreator).forEach(keyword => {
         if (keyword in keywordFrequencyOpenedBy) {
-            // Учитываем минимальную частоту ключевого слова как частичное совпадение
             commonKeywordsCount += Math.min(
                 keywordFrequencyCreator[keyword],
                 keywordFrequencyOpenedBy[keyword]
@@ -99,24 +98,20 @@ export default defineEventHandler(async event => {
         }
     });
 
-    // Рассчитываем процент совпадения по ключевым словам с нормализацией
+    // Рассчитываем процент совпадения по ключевым словам, нормализуя по минимальному количеству ключевых слов
+    const minTotalKeywords = Math.min(
+        totalKeywordsCreator,
+        totalKeywordsOpenedBy
+    );
     const keywordMatchPercentage =
-        (commonKeywordsCount /
-            ((totalKeywordsCreator + totalKeywordsOpenedBy) / 2)) *
-        100;
+        (commonKeywordsCount / minTotalKeywords) * 100;
 
-    // Шаг 4: Рассчитываем общий процент совпадения с учетом веса
+    // Шаг 6: Рассчитываем общий процент совпадения с учетом веса
     const movieWeight = 0.6;
     const keywordWeight = 0.4;
     const totalMatchPercentage = Math.round(
         movieMatchPercentage * movieWeight +
             keywordMatchPercentage * keywordWeight
-    );
-
-    console.log(
-        movieMatchPercentage,
-        keywordMatchPercentage,
-        totalMatchPercentage
     );
 
     await booths.updateOne(

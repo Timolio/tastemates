@@ -68,7 +68,7 @@ onMounted(async () => {
 </script>
 
 <template>
-    <div class="h-full flex flex-col gap-2 p-2">
+    <div class="h-full flex flex-col gap-3 p-2 pb-6">
         <div class="w-full header-container flex rounded-2xl">
             <div
                 class="header w-full rounded-2xl flex flex-row py-2 px-8 items-center justify-between"

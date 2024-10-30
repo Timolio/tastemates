@@ -44,7 +44,7 @@ const sendLink = async () => {
 </script>
 
 <template>
-    <div class="h-full flex flex-col gap-2 p-2 pb-6">
+    <div class="h-full flex flex-col gap-3 p-2 pb-6">
         <!-- <div class="ccontainer rounded-2xl px-2 py-2">
             <div class="flex flex-col gap-1 w-full">
                 <div class="flex flex-row w-full gap-1 items-center">

@@ -69,9 +69,9 @@ onMounted(async () => {
 
 <template>
     <div class="h-full flex flex-col gap-2 p-2">
-        <div class="w-full header-container flex rounded-3xl">
+        <div class="w-full header-container flex rounded-2xl">
             <div
-                class="header w-full rounded-3xl flex flex-row py-2 px-8 items-center justify-between"
+                class="header w-full rounded-2xl flex flex-row py-2 px-8 items-center justify-between"
             >
                 <div class="flex flex-row gap-4 items-center">
                     <img
@@ -123,7 +123,7 @@ onMounted(async () => {
             </div>
         </div>
         <div
-            class="flex flex-row items-center search-input text-xl rounded-3xl"
+            class="flex flex-row items-center search-input text-xl rounded-2xl"
         >
             <input
                 type="text"
@@ -146,7 +146,7 @@ onMounted(async () => {
                 />
             </svg>
         </div>
-        <div class="ccontainer flex flex-col grow rounded-3xl">
+        <div class="ccontainer flex flex-col grow rounded-2xl">
             <!-- <div class="m-2 mb-4"></div> -->
             <div
                 v-if="status === 0"
@@ -230,7 +230,7 @@ onMounted(async () => {
     transition: all 0.1s;
 }
 
-.profile-button:active {
+.profile-button:hover {
     transform: scale(0.95);
 }
 
@@ -270,6 +270,7 @@ onMounted(async () => {
     outline: none;
     background: none;
     padding: 8px 0px 8px 1.5rem;
+    z-index: 1000;
 }
 
 .header-container {

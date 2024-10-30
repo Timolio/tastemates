@@ -109,7 +109,7 @@ const sendLink = async () => {
             </div>
         </div> -->
 
-        <div class="ccontainer flex flex-col rounded-3xl grow-0">
+        <div class="ccontainer flex flex-col rounded-2xl grow-0">
             <div
                 class="header h-full justify-between flex flex-row gap-4 items-center px-8 py-2"
             >
@@ -147,7 +147,7 @@ const sendLink = async () => {
             </div> -->
         </div>
 
-        <div class="ccontainer flex flex-col grow rounded-3xl overflow-hidden">
+        <div class="ccontainer flex flex-col grow rounded-2xl overflow-hidden">
             <div class="items-container">
                 <div
                     class="w-full flex items-center justify-between pt-6 pb-4 px-6"
@@ -218,7 +218,7 @@ const sendLink = async () => {
             </div>
         </div>
         <button
-            class="flex flex-row items-center search-input text-xl rounded-3xl grow-0"
+            class="flex flex-row items-center search-input text-xl rounded-2xl grow-0"
             @click="goToSearch"
         >
             <div class="grow pl-3">Поиск</div>
@@ -317,7 +317,7 @@ const sendLink = async () => {
     transition: all 0.1s;
 }
 
-.profile-button:active {
+.profile-button:hover {
     transform: scale(0.95);
 }
 
@@ -337,7 +337,7 @@ const sendLink = async () => {
     transition: all 0.1s;
 }
 
-.sub:active {
+.sub:hover {
     transform: scale(0.95);
 }
 
@@ -372,7 +372,7 @@ const sendLink = async () => {
     cursor: pointer;
 }
 
-.poster:active {
+.poster:hover {
     transform: scale(0.95);
 }
 </style>

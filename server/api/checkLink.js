@@ -20,7 +20,11 @@ export default defineEventHandler(async event => {
         throw createError('An error occured');
     }
 
-    if (booth.openedBy.id !== telegramId && booth.openedBy.id !== null) {
+    if (
+        booth.openedBy.id !== telegramId &&
+        creatorId !== telegramId &&
+        booth.openedBy.id !== null
+    ) {
         return {
             message: 'Эта ссылка уже была использована не вами.',
         };

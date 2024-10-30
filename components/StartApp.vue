@@ -1,9 +1,12 @@
 <script setup>
-const { useWebAppViewport } = await import('vue-tg');
+const { useWebAppViewport, useWebAppTheme } = await import('vue-tg');
 
 const { disableVerticalSwipes, expand } = useWebAppViewport();
+const { setHeaderColor, themeParams, setBackgroundColor } = useWebAppTheme();
 
 onMounted(async () => {
+    setHeaderColor(themeParams.value.secondary_bg_color);
+    setBackgroundColor(themeParams.value.secondary_bg_color);
     disableVerticalSwipes();
     expand();
     const root = document.documentElement;
@@ -19,7 +22,7 @@ onMounted(async () => {
     );
     root.style.setProperty(
         '--tg-theme-section-bg-lcolor',
-        adjust(style.getPropertyValue('--tg-theme-section-bg-color') || '', 5)
+        adjust(style.getPropertyValue('--tg-theme-section-bg-color') || '', 8)
     );
     root.style.setProperty(
         '--tg-theme-button-dtcolor',

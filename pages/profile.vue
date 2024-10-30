@@ -317,7 +317,8 @@ const sendLink = async () => {
     transition: all 0.1s;
 }
 
-.profile-button:hover {
+.profile-button:hover,
+.profile-button:active {
     transform: scale(0.95);
 }
 
@@ -337,7 +338,8 @@ const sendLink = async () => {
     transition: all 0.1s;
 }
 
-.sub:hover {
+.sub:hover,
+.sub:active {
     transform: scale(0.95);
 }
 
@@ -368,11 +370,13 @@ const sendLink = async () => {
     transition: all 0.1s;
 }
 
-.poster:hover {
+.poster:hover,
+.poster:active {
     cursor: pointer;
 }
 
-.poster:hover {
+.poster:hover,
+.poster:active {
     transform: scale(0.95);
 }
 </style>

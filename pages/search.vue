@@ -230,7 +230,8 @@ onMounted(async () => {
     transition: all 0.1s;
 }
 
-.profile-button:hover {
+.profile-button:hover,
+.profile-button:active {
     transform: scale(0.95);
 }
 

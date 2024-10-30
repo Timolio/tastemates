@@ -59,7 +59,7 @@ onMounted(() => {
                         class="sub px-2 py-1 shrink-0 rounded-l-xl flex flex-row gap-2 items-center justify-between"
                         @click="sendLink"
                     >
-                        <div class="info mb-0.5 ml-2 font-semibold text-base">
+                        <div class="info mb-0.5 ml-2 font-semibold text-sm">
                             отправь 🫵 ссылку
                         </div>
                         <div
@@ -100,15 +100,18 @@ onMounted(() => {
                             />
                         </svg>
                     </button>
-                    <div class="w-full text-lg font-bold ml-1 text-center">
-                        <span class="text-sm">И</span> <em>УЗНАЙ</em> 🤫
+                    <div class="w-full text-base font-bold ml-1 text-center">
+                        <span class="text-sm">И</span> <em>УЗНАЙ</em>
+                        <span class="text-sm">🤫</span>
                     </div>
                 </div>
                 <div class="text-sm justify-evenly items-center flex">
-                    <span class="text-base font-bold heart">НАСКОЛЬКО😠⁉️</span>
-                    <span class="text-lg mb-2"><em>СОВПАДАЮТ</em>💫</span>
+                    <span class="text-sm font-bold heart"
+                        >НАСКОЛЬКО<span class="text-base">😠</span>⁉️</span
+                    >
+                    <span class="text-base mb-2"><em>СОВПАДАЮТ</em>💫</span>
                     <!-- <span class="text-xl"> ВАШИ😏</span> -->
-                    <span class="text-base font-semibold tag">ВКУСЫ🫦</span>
+                    <span class="text-sm font-semibold tag">ВКУСЫ🫦</span>
                 </div>
             </div>
         </div>

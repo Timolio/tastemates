@@ -4,8 +4,6 @@ export default defineEventHandler(async event => {
     const body = await readBody(event);
     const { boothId, telegramId, creatorId } = body;
 
-    console.log(typeof boothId, typeof telegramId, typeof creatorId);
-
     if (!boothId || !telegramId || !creatorId) {
         throw createError('An error occured');
     }
@@ -18,16 +16,6 @@ export default defineEventHandler(async event => {
     if (!booth) {
         console.error('Booth not found');
         throw createError('An error occured');
-    }
-
-    if (
-        booth.openedBy.id !== telegramId &&
-        creatorId !== telegramId &&
-        booth.openedBy.id !== null
-    ) {
-        return {
-            message: 'Эта ссылка уже была использована не вами.',
-        };
     }
 
     if (telegramId == creatorId) {
@@ -47,15 +35,20 @@ export default defineEventHandler(async event => {
         }
     }
 
-    const creatorUser = await users.findOne({ _id: booth.creator.id });
-
     if (booth.openedBy.id === telegramId) {
+        const creatorUser = await users.findOne({ _id: booth.creator.id });
         return {
             message: `Вы уже открывали эту ссылку.`,
             totalMatchPercentage: booth.totalMatchPercentage,
             photo: creatorUser.photo_base64,
         };
+    } else if (booth.openedBy.id !== telegramId) {
+        return {
+            message: 'Эта ссылка уже была использована не вами.',
+        };
     }
+
+    const creatorUser = await users.findOne({ _id: booth.creator.id });
 
     // Шаг 1: Получаем списки любимых фильмов для пользователей
     const { favorites: creatorIds } = await users.findOne({ _id: creatorId });

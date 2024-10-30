@@ -159,7 +159,10 @@ onMounted(async () => {
                     <ResultItem
                         v-for="result in results"
                         :result="result"
-                        :is-favorite="result.id in userStore.favorites"
+                        :is-favorite="
+                            conId(result.id, result.media_type) in
+                            userStore.favorites
+                        "
                     />
                 </div>
             </div>

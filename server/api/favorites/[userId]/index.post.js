@@ -5,8 +5,9 @@ export default defineEventHandler(async event => {
     const userId = Number(event.context.params.userId);
     const query = getQuery(event);
     const itemId = Number(query.itemId);
+    const media_type = query.mediaType;
     const body = await readBody(event);
-    const { original_language, media_type } = body;
+    const { original_language } = body;
 
     try {
         let item = await media.findOne({ _id: conId(itemId, media_type) });

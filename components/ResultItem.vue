@@ -19,11 +19,10 @@ const favoritize = async () => {
         if (isFavorite.value) {
             body = {
                 original_language: props.result?.original_language,
-                media_type: props.result.media_type,
             };
         }
         const response = await $fetch(
-            `/api/favorites/${userStore.userId}?itemId=${props.result.id}`,
+            `/api/favorites/${userStore.userId}?itemId=${props.result.id}&mediaType=${props.result.media_type}`,
             {
                 method: isFavorite.value ? 'POST' : 'DELETE',
                 body: isFavorite.value ? body : null,

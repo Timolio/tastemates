@@ -1,3 +1,7 @@
+html {
+    overflow: hidden;
+}
+
 body {
     /* background-color: var(--tg-theme-button-color); */
     /* background-image: linear-gradient(
@@ -11,7 +15,7 @@ body {
         var(--tg-theme-bg-dcolor),
         var(--tg-theme-bg-color)
     ); */
-    background-color: var(--tg-theme-section-bg-color);
+    background-color: var(--tg-theme-secondary-bg-color);
     color: var(--tg-theme-text-color);
 }
 

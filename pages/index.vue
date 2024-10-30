@@ -9,6 +9,10 @@ const userStore = useUserStore();
 const noUser = ref(false);
 
 onMounted(async () => {
+    // if (!initDataUnsafe?.user) {
+    //     noUser.value = true;
+    //     return;
+    // }
     const response = await userStore.fetchUser(initDataUnsafe?.user?.id ?? 505);
     console.log(response);
     if (!response) {
@@ -31,14 +35,19 @@ onMounted(async () => {
 </script>
 
 <template>
-    <div v-if="noUser">
+    <div class="flex h-full flex-col justify-center items-center" v-if="noUser">
         <button
-            class="bg-black p-3 m-3"
+            class="no font-semibold rounded-2xl p-3 m-3"
             @click="openTelegramLink('https://t.me/tastemates_bot')"
         >
-            Запусти бота, и начинай пользоватся tastemates!
+            Запусти бота, и начинай пользоватся<br />
+            Открыть бота
         </button>
     </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.no {
+    background-color: var(--tg-theme-section-bg-dcolor);
+}
+</style>

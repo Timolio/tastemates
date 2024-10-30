@@ -1,9 +1,10 @@
 <script setup>
 import _ from 'lodash';
-const { useWebApp } = await import('vue-tg');
+const { useWebApp, useWebAppBackButton } = await import('vue-tg');
 import { useUserStore } from '~/stores/userStore';
 
 const { initDataUnsafe } = useWebApp();
+const { hideBackButton } = useWebAppBackButton();
 
 const route = useRoute();
 const query = ref('');
@@ -62,12 +63,13 @@ const goToProfile = async () => {
 };
 
 onMounted(async () => {
+    hideBackButton();
     searchElement.value.focus();
 });
 </script>
 
 <template>
-    <div class="h-full flex flex-col gap-3 p-3">
+    <div class="h-full flex flex-col gap-2 p-2">
         <div class="w-full header-container flex rounded-2xl">
             <div
                 class="header w-full rounded-2xl flex flex-row py-2 px-8 items-center justify-between"
@@ -243,15 +245,15 @@ onMounted(async () => {
 
     /* height: 100%; */
     /* box-shadow: 0px -10px 40px 30px rgba(0, 0, 0, 0.3); */
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-    background-color: var(--tg-theme-bg-d2color);
+    /* box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); */
+    background-color: var(--tg-theme-section-bg-dcolor);
     /* border-top-left-radius: 1.75rem; */
     /* border-top-right-radius: 1.75rem; */
     overflow: hidden;
 }
 
 .header {
-    background-color: var(--tg-theme-bg-d2color);
+    background-color: var(--tg-theme-section-bg-dcolor);
 }
 
 .heart {
@@ -263,9 +265,9 @@ onMounted(async () => {
 
     /* box-shadow: 0 0 20px var(--tg-theme-button-dtcolor); */
     /* border: 2px solid var(--tg-theme-button-dcolor); */
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    /* box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); */
     color: var(--tg-theme-text-color);
-    background-color: var(--tg-theme-secondary-bg-color);
+    background-color: var(--tg-theme-section-bg-lcolor);
 
     transition: all 0.1s;
 }
@@ -285,7 +287,7 @@ onMounted(async () => {
         var(--tg-theme-button-d2color)
     ); */
     /* box-shadow: 0 0 20px var(--tg-theme-button-dtcolor); */
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    /* box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); */
 }
 
 .avatar {

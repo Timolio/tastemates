@@ -3,6 +3,7 @@
         <NuxtPage />
     </NuxtLayout>
 </template>
+
 <style>
 :root {
     --tg-theme-accent-text-color: #6ab2f2;

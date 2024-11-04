@@ -4,7 +4,7 @@ export const useUserStore = defineStore('userStore', {
     state: () => {
         return {
             userId: null,
-            userPhoto: null,
+            userPhoto: '/anonym.png',
             favorites: [],
         };
     },
@@ -37,8 +37,9 @@ export const useUserStore = defineStore('userStore', {
                             },
                             {}
                         ) ?? {};
-
-                    this.userPhoto = `data:image/jpeg;base64,${data.userPhoto}`;
+                    if (data.userPhoto !== null) {
+                        this.userPhoto = `data:image/jpeg;base64,${data.userPhoto}`;
+                    }
                     return true;
                 }
                 console.log('fetched', this.favorites);

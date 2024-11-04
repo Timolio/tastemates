@@ -9,7 +9,7 @@ const { userPhoto } = storeToRefs(userStore);
 const result = ref({
     message: '',
     totalMatchPercentage: null,
-    photo: null,
+    photo: '/anonym.png',
 });
 
 const checkLinkState = async () => {
@@ -23,11 +23,12 @@ const checkLinkState = async () => {
             },
         });
 
-        result.value = {
-            message: response.message,
-            totalMatchPercentage: response.totalMatchPercentage,
-            photo: `data:image/jpeg;base64,${response.photo}`,
-        };
+        result.value.message = response.message;
+        result.value.totalMatchPercentage = response.totalMatchPercentage;
+
+        if (response.photo !== null) {
+            result.value.photo = `data:image/jpeg;base64,${response.photo}`;
+        }
     } catch (error) {
         result.value.message = 'Произошла ошибка при проверке состояния ссылки';
         console.error(error);

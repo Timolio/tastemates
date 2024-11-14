@@ -1,75 +1,12 @@
-# Nuxt Minimal Starter
+# Tastemates - Find Your Taste Buddies in Telegram!
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+With Tastemates, you can like your favorite movies, series, and anime directly in Telegram! Then, easily compare your taste compatibility with friends through a unique link—no need to leave the app.
 
-## Setup
+Check out the bot [here](https://t.me/tastemates_bot).
+It’s still in development.
 
-Make sure to install dependencies:
-
-```bash
-# npm
-npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+<div>
+<img alt='1' src='https://github.com/user-attachments/assets/06c40ec3-e371-407d-be9b-e98c68b2f995' width='250px'/>
+<img alt='2' src='https://github.com/user-attachments/assets/9d17340e-5259-4f13-a4c2-4c76fcdef5de' width='250px'/>
+<img alt='3' src='https://github.com/user-attachments/assets/952826e2-462f-4297-bb92-b9108ae333b6' width='250px'/>
+</div>

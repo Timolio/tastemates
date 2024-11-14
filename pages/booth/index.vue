@@ -46,7 +46,7 @@ onMounted(() => {
     >
         <div v-if="!!result.totalMatchPercentage" class="flex flex-col gap-5">
             <h1 class="font-semibold text-4xl">
-                <span class="text-xl">Ваше совпадение </span
+                <span class="text-xl">{{ $t('compatibility') }} </span
                 ><span class="sub rounded-xl px-3 mb-2"
                     >{{ result.totalMatchPercentage
                     }}<span class="text-3xl">%</span></span

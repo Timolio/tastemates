@@ -78,10 +78,12 @@ onMounted(async () => {
                     <div class="flex flex-col gap-2">
                         <h1 class="text-2xl font-semibold">Timolio</h1>
                         <button
-                            class="p-1 px-3 pr-2 flex flex-row gap-0.5 profile-button items-center"
+                            class="p-1 px-3 pr-2 flex flex-row justify-between gap-0.5 profile-button items-center"
                             @click="goToProfile"
                         >
-                            <span class="mb-0.5 font-medium"> Профиль </span>
+                            <span class="mb-0.5 font-medium">
+                                {{ $t('profile') }}
+                            </span>
                             <svg
                                 width="12"
                                 height="12"
@@ -126,7 +128,7 @@ onMounted(async () => {
                 v-model="query"
                 ref="searchElement"
                 @input="searchInput"
-                placeholder="Поиск"
+                :placeholder="$t('search')"
                 class="grow pl-3"
             />
             <svg
@@ -150,7 +152,7 @@ onMounted(async () => {
             >
                 <div v-if="query.length > 1">
                     <p class="mt-4 mb-2" v-if="results.length > 0">
-                        Фильмы и сериалы
+                        {{ $t('movies_series') }}
                     </p>
                     <ResultItem
                         v-for="result in results"
@@ -189,7 +191,7 @@ onMounted(async () => {
                     ></path>
                 </svg>
             </div>
-            <div v-else-if="status === 2">Ничего не найдено</div>
+            <div v-else-if="status === 2">{{ $t('nothing_found') }}</div>
         </div>
     </div>
 </template>

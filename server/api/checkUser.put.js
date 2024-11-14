@@ -17,17 +17,6 @@ export default defineEventHandler(async event => {
 
         const { favorites: favoritesIds, photo_base64 } = user;
 
-        // const response = await $fetch(
-        //     `https://api.telegram.org/file/bot${
-        //         useRuntimeConfig().BOT_TOKEN
-        //     }/${photo_url}`,
-        //     { responseType: 'arrayBuffer' }
-        // );
-
-        // const userPhoto = Buffer.from(response).toString('base64');
-
-        // console.log(typeof response, response);
-
         let favorites;
         if (favoritesIds.length === 0) {
             favorites = [];

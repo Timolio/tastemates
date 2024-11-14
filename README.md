@@ -6,7 +6,7 @@ Check out the bot [here](https://t.me/tastemates_bot).
 It’s still in development.
 
 <div>
-<img alt='1' src='https://github.com/user-attachments/assets/06c40ec3-e371-407d-be9b-e98c68b2f995' width='250px'/>
-<img alt='2' src='https://github.com/user-attachments/assets/9d17340e-5259-4f13-a4c2-4c76fcdef5de' width='250px'/>
-<img alt='3' src='https://github.com/user-attachments/assets/952826e2-462f-4297-bb92-b9108ae333b6' width='250px'/>
+<img alt='1' src='https://github.com/user-attachments/assets/7fe1b26d-f837-42c3-8a10-f15fa67dda8c' width='250px'/>
+<img alt='2' src='https://github.com/user-attachments/assets/3c11f096-cce6-4140-8721-5d629a6f669c' width='250px'/>
+<img alt='3' src='https://github.com/user-attachments/assets/270520fd-8eb4-4dd7-991b-f4fff9158466' width='250px'/>
 </div>

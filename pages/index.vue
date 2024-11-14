@@ -30,7 +30,7 @@ onMounted(async () => {
     const lang = ru_langs.has(initDataUnsafe?.user?.language_code)
         ? 'ru'
         : initDataUnsafe?.user?.language_code;
-    setLocale('en');
+    setLocale(lang);
 
     const response = await userStore.fetchUser(initDataUnsafe?.user?.id ?? 505);
     console.log(response);
@@ -47,7 +47,7 @@ onMounted(async () => {
         const link = `/booth?boothId=${params.boothId}&creatorId=${params.creatorId}`;
         await navigateTo(link);
     } else {
-        await navigateTo('/search');
+        await navigateTo('/profile');
     }
 });
 </script>

@@ -74,7 +74,7 @@ const activeHeart =
             <p>
                 {{
                     getTags(
-                        result.media_type,
+                        $t(result.media_type),
                         result?.first_air_date ?? result?.release_date
                     )
                 }}

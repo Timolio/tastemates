@@ -2,11 +2,10 @@
 const { useWebAppViewport, useWebAppTheme } = await import('vue-tg');
 
 const { disableVerticalSwipes, expand } = useWebAppViewport();
-const { setHeaderColor, themeParams, setBackgroundColor } = useWebAppTheme();
+const { setHeaderColor, themeParams } = useWebAppTheme();
 
 onMounted(async () => {
     setHeaderColor(themeParams.value.secondary_bg_color);
-    setBackgroundColor(themeParams.value.secondary_bg_color);
     disableVerticalSwipes();
     expand();
     const root = document.documentElement;

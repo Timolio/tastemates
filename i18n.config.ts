@@ -11,6 +11,8 @@ export default defineI18nConfig(() => ({
             movies_series: 'Movies and Series',
             nothing_found: 'Nothing found',
             compatibility_check: 'Compatibility',
+            movie: 'Movie',
+            tv: 'TV',
         },
         ru: {
             compatibility: 'Ваша совместимость',
@@ -21,6 +23,8 @@ export default defineI18nConfig(() => ({
             movies_series: 'Фильмы и сериалы',
             nothing_found: 'Ничего не найдено',
             compatibility_check: 'Совместимость',
+            movie: 'Фильм',
+            tv: 'Сериал',
         },
         uk: {
             compatibility: 'Ваша сумісність',
@@ -31,6 +35,8 @@ export default defineI18nConfig(() => ({
             movies_series: 'Фільми та серіали',
             nothing_found: 'Нічого не знайдено',
             compatibility_check: 'Сумісність',
+            movie: 'Фільм',
+            tv: 'Серіал',
         },
     },
 }));

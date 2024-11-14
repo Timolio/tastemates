@@ -65,6 +65,7 @@ const goToProfile = async () => {
 onMounted(async () => {
     hideBackButton();
     searchElement.value.focus();
+    searchElement.value.click();
 });
 </script>
 

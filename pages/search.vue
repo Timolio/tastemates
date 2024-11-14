@@ -13,6 +13,7 @@ const userStore = useUserStore();
 const status = ref(0);
 const searchElement = ref();
 const { favorites, userPhoto } = storeToRefs(userStore);
+const { locale } = useI18n();
 
 const searchTMDB = async () => {
     if (query.value.length < 2) {
@@ -27,7 +28,7 @@ const searchTMDB = async () => {
             params: {
                 query: query.value,
                 include_adult: true,
-                language: initDataUnsafe?.user?.language_code ?? 'ru',
+                language: locale.value ?? 'ru',
                 page: 1,
             },
             headers: {
